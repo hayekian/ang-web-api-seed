@@ -61,6 +61,11 @@ AngApp.controller('MainCtrl', ['$scope', '$http',
       _POST2($http, "WebApi", toPost, function (data) {
 
           alert(JSON.stringify(data));
+          _POST2($http, "api/text-to-speech", { text : 'My name is jorge'}, function (data) {
+
+              alert(JSON.stringify(data));
+
+          });
 
       });
 
