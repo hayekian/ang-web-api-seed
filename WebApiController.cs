@@ -106,8 +106,8 @@ namespace SampleAngular
     {
 
         JObject web_response = new JObject();
+        public static List<Voice> voices = null;
 
-     
         [HttpGet]
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -185,11 +185,39 @@ namespace SampleAngular
         //    return web_response.ToString();
 
         //}
-      
+
+
+        [Route("api/GetVoices")]
+        [HttpGet]
+        public object GetVoices()
+        {
+           
+           
+            try
+            {
+
+                AmazonPollyClient client = new AmazonPollyClient(Amazon.RegionEndpoint.USEast1);
+
+                // Create describe voices request.
+                DescribeVoicesRequest describeVoicesRequest = new DescribeVoicesRequest();
+                // Synchronously ask Amazon Polly to describe available TTS voices.
+                DescribeVoicesResponse describeVoicesResult = client.DescribeVoices(describeVoicesRequest);
+                voices = describeVoicesResult.Voices;
+                return voices;
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return "ok";
+
+        }
+
 
         [Route("api/text-to-speech")]
         [HttpPost]
-        public string textToSpeech()
+        public object textToSpeech()
         {
             var APP = this.GetPostedJSON();
             string filename = "";
@@ -198,19 +226,16 @@ namespace SampleAngular
                
                 AmazonPollyClient client = new AmazonPollyClient(Amazon.RegionEndpoint.USEast1);
 
-                // Create describe voices request.
-                DescribeVoicesRequest describeVoicesRequest = new DescribeVoicesRequest();
-                // Synchronously ask Amazon Polly to describe available TTS voices.
-                DescribeVoicesResponse describeVoicesResult = client.DescribeVoices(describeVoicesRequest);
-                List<Voice> voices = describeVoicesResult.Voices;
+                var voiceId = voices.SingleOrDefault(v => v.Id.Value == APP["VoiceId"].ToStringOrBlank());
 
 
                 // Create speech synthesis request.
                 SynthesizeSpeechRequest synthesizeSpeechPresignRequest = new SynthesizeSpeechRequest();
                 // Text
+                synthesizeSpeechPresignRequest.TextType = TextType.Ssml;
                 synthesizeSpeechPresignRequest.Text = APP["text"].ToStringOrBlank();
                 // Select voice for synthesis.
-                synthesizeSpeechPresignRequest.VoiceId = voices[0].Id;
+                synthesizeSpeechPresignRequest.VoiceId = voiceId.Id;
                 // Set format to MP3.
                 synthesizeSpeechPresignRequest.OutputFormat = OutputFormat.Mp3;
                 // Get the presigned URL for synthesized speech audio stream.
@@ -224,12 +249,14 @@ namespace SampleAngular
                 FileStream wFile = new FileStream(path_audio, FileMode.Create);
                 presignedSynthesizeSpeechUrl.AudioStream.CopyTo(wFile);
                 wFile.Close();
+                return CreateFrameworkObjResponse(0, null,
+                    "data:audio/mp3;base64," + System.Convert.ToBase64String(File.ReadAllBytes(path_audio)));
             }
             catch (Exception ex)
             {
-                filename = ex.ToString();
+                return CreateFrameworkObjResponse(-1, ex.Message,null);
             }
-            return "ok";
+          
 
         }
 

@@ -57,17 +57,45 @@ AngApp.controller('MainCtrl', ['$scope', '$http',
       $scope.Original = JSON.stringify(obj);
       $scope.NewObj = JSON.stringify(obj2);
       $scope.Changes = JSON.stringify(ObjDifferences(obj, obj2));
+      $scope.Audio = "";
       var toPost = { Name: 'jorge', Age: 39 };
-      _POST2($http, "WebApi", toPost, function (data) {
 
-          alert(JSON.stringify(data));
-          _POST2($http, "api/text-to-speech", { text : 'My name is jorge'}, function (data) {
 
-              alert(JSON.stringify(data));
+      _GET($http, "api/GetVoices",  function (data) {
 
-          });
+          $scope.Voices = data;
 
       });
+
+
+      $scope.Synthesize = function () {
+          $scope.Message = 'Synthesizing...'
+          _POST2($http, "api/text-to-speech", { text: $scope.Text, VoiceId : $scope.VoiceId }, function (data) {
+
+              if (data.STATUS == 0) {
+
+                  $('#aud').attr('src', data.DATA);
+                  $scope.Message = 'Done...';
+
+              }
+              else
+              {
+                  alert(data.MSG);
+              }
+
+          });
+      }
+
+      //_POST2($http, "WebApi", toPost, function (data) {
+
+      //    alert(JSON.stringify(data));
+      //    _POST2($http, "api/text-to-speech", { text : 'My name is jorge'}, function (data) {
+
+      //        alert(JSON.stringify(data));
+
+      //    });
+
+      //});
 
 
 
@@ -162,3 +190,17 @@ function _POST2(http, _url, _data, next) {
 
 }
 
+
+
+
+function _GET(http, _url, next) {
+    http({ method: 'GET', url: _url }).
+        success(function (data, status, headers, config) {
+            next(data);
+        }).
+        error(function (data, status, headers, config) {
+
+            throw new Error('bad post');
+        });
+
+}

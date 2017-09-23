@@ -19,18 +19,32 @@
    
     <div ng-controller="MainCtrl">
 
-        {{ TEST }}
+      
+        <div id="text-to-speech">
+            Select voice: <select ng-model="VoiceId" ng-options="item.Name as (item.LanguageName + '('+ item.Name+')') for item in Voices">
+                    <option value=""></option>
+                </select>
+            <p />
+            Enter text to synthesize:
 
-   Original:     <div ng-bind-html="Original" ></div>
+            <textarea ng-model="Text" rows="10" cols="80"></textarea>
 
-<br />
-  New:       <div ng-bind-html="NewObj" ></div>
- 
-        <br />
-  Changes:       <div ng-bind-html="Changes" ></div>
-        
-           </div>
+            <button type="button" ng-click="Synthesize()">Synthesize</button>
+            <p />
+            {{Message}}
+            <p />
+
+            <audio  id="aud" controls />
+            <p />
+
+          
+
+          
+        </div>
 
 
+      </div>
+
+  
 </body>
 </html>
