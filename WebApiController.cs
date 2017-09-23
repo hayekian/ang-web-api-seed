@@ -208,7 +208,7 @@ namespace SampleAngular
             }
             catch (Exception ex)
             {
-               
+                return ex.Message;
             }
             return "ok";
 
