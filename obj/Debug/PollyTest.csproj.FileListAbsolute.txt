@@ -10,3 +10,4 @@ C:\dev\polly\bin\AWSSDK.Core.pdb
 C:\dev\polly\bin\AWSSDK.Core.xml
 C:\dev\polly\bin\AWSSDK.Polly.pdb
 C:\dev\polly\bin\AWSSDK.Polly.xml
+C:\dev\polly\obj\Debug\PollyTest.csprojResolveAssemblyReference.cache
