@@ -27,7 +27,8 @@
             <p />
             Enter text to synthesize:
 
-            <textarea ng-model="Text" rows="10" cols="80"></textarea>
+            <textarea ng-model="Text" rows="10" cols="80">
+	    </textarea>
 
             <button type="button" ng-click="Synthesize()">Synthesize</button>
             <p />
