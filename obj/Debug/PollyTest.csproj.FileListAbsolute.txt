@@ -2,7 +2,6 @@ C:\dev\polly\bin\SampleAngular.dll.config
 C:\dev\polly\bin\SampleAngular.dll
 C:\dev\polly\bin\SampleAngular.pdb
 C:\dev\polly\bin\Newtonsoft.Json.dll
-C:\dev\polly\obj\Debug\PollyTest.csprojResolveAssemblyReference.cache
 C:\dev\polly\obj\Debug\SampleAngular.dll
 C:\dev\polly\obj\Debug\SampleAngular.pdb
 C:\dev\polly\bin\AWSSDK.Core.dll

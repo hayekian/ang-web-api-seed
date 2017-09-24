@@ -46,19 +46,10 @@ AngApp.config(['$routeProvider', function ($routeProvider) {
 
 AngApp.controller('MainCtrl', ['$scope', '$http',
   function ($scope, $http) {
-      $scope.TEST = "the test";
-
-      var obj = {};
-
-      obj.name = 'Jorge';
-
-      var obj2 = angular.copy(obj);
-      obj2.name = 'mike';
-      $scope.Original = JSON.stringify(obj);
-      $scope.NewObj = JSON.stringify(obj2);
-      $scope.Changes = JSON.stringify(ObjDifferences(obj, obj2));
+    
       $scope.Audio = "";
-	$scope.Text = '<speak>This is very cool. <prosody rate="x-fast"> I can speak very fast.</prosody></speak>';
+      $scope.AutoStart = true;
+      $scope.Text = '<speak>This is very cool. <prosody rate="x-fast"> I can speak very fast.</prosody></speak>';
 
 
     	  var toPost = { Name: 'jorge', Age: 39 };
@@ -67,17 +58,28 @@ AngApp.controller('MainCtrl', ['$scope', '$http',
       _GET($http, "api/GetVoices",  function (data) {
 
           $scope.Voices = data;
+          $scope.VoiceId = data[0].Name;
 
       });
 
 
       $scope.Synthesize = function () {
+          if ($scope.VoiceId == null || $scope.VoiceId.length < 3) {
+              $scope.Message = 'You must select a voice';
+              return;
+          }
           $scope.Message = 'Synthesizing...'
           _POST2($http, "api/text-to-speech", { text: $scope.Text, VoiceId : $scope.VoiceId }, function (data) {
 
               if (data.STATUS == 0) {
 
                   $('#aud').attr('src', data.DATA);
+                  if ($scope.AutoStart) {
+                      $('#aud').attr('autoplay', '');
+                  }
+                  else {
+                      $('#aud').removeAttr('autoplay');
+                  }
                   $scope.Message = 'Done...';
 
               }

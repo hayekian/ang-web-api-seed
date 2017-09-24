@@ -17,6 +17,8 @@
 </head>
 <body ng-app="App">
    
+    <h1>Simple Amazon Polly text-to-speech app. </h1>
+
     <div ng-controller="MainCtrl">
 
       
@@ -25,12 +27,12 @@
                     <option value=""></option>
                 </select>
             <p />
-            Enter text to synthesize:
+            Enter text to synthesize: (<a href="http://docs.aws.amazon.com/polly/latest/dg/supported-ssml.html" target="_blank">SSML tags supported by Amazon Polly)</a>
             <p />
             <textarea ng-model="Text" rows="10" cols="80">
 	    </textarea>
 <p />
-            <button type="button" ng-click="Synthesize()">Synthesize</button>
+            <button type="button" ng-click="Synthesize()">Synthesize</button> <input type="checkbox" ng-model="AutoStart" /> Auto start
             <p />
             {{Message}}
             <p />

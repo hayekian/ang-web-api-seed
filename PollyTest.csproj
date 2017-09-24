@@ -45,9 +45,6 @@
     <Reference Include="AWSSDK.Polly, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
       <HintPath>packages\AWSSDK.Polly.3.3.2.3\lib\net45\AWSSDK.Polly.dll</HintPath>
     </Reference>
-    <Reference Include="HLib">
-      <HintPath>..\..\..\Lib\HLib.dll</HintPath>
-    </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\Lib\itextsharp.dll</HintPath>
     </Reference>
@@ -93,12 +90,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Commands.aspx" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\qunit-1.15.0.css" />
     <Content Include="css\styles.css" />
-    <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.aspx" />
@@ -122,20 +117,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.aspx.cs">
-      <DependentUpon>Commands.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Commands.aspx.designer.cs">
-      <DependentUpon>Commands.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -23,11 +23,7 @@ namespace SampleAngular
      routeTemplate: "{controller}/{id}",
      defaults: new { id = System.Web.Http.RouteParameter.Optional }
                 );
-                config.Routes.MapHttpRoute(
-                  name: "Persons",
-    routeTemplate: "{controller}/{id}",
-    defaults: new { id = System.Web.Http.RouteParameter.Optional }
-               );
+               
             });
         }
 
