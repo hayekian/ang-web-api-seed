@@ -58,7 +58,10 @@ AngApp.controller('MainCtrl', ['$scope', '$http',
       $scope.NewObj = JSON.stringify(obj2);
       $scope.Changes = JSON.stringify(ObjDifferences(obj, obj2));
       $scope.Audio = "";
-      var toPost = { Name: 'jorge', Age: 39 };
+	$scope.Text = '<speak>This is very cool. <prosody rate="x-fast"> I can speak very fast.</prosody></speak>';
+
+
+    	  var toPost = { Name: 'jorge', Age: 39 };
 
 
       _GET($http, "api/GetVoices",  function (data) {
