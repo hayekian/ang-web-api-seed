@@ -16,3 +16,16 @@ C:\dev\git\MyProjects\SampleAngular\SampleAngular\bin\Newtonsoft.Json.xml
 C:\dev\git\MyProjects\SampleAngular\SampleAngular\bin\System.Net.Http.Formatting.xml
 C:\dev\git\MyProjects\SampleAngular\SampleAngular\bin\System.Web.Http.xml
 C:\dev\git\MyProjects\SampleAngular\SampleAngular\bin\System.Web.Http.WebHost.xml
+C:\dev\libertarian.world\bin\SampleAngular.dll.config
+C:\dev\libertarian.world\bin\SampleAngular.dll
+C:\dev\libertarian.world\bin\SampleAngular.pdb
+C:\dev\libertarian.world\bin\Newtonsoft.Json.dll
+C:\dev\libertarian.world\bin\HLib.pdb
+C:\dev\libertarian.world\bin\System.Net.Http.Formatting.xml
+C:\dev\libertarian.world\bin\System.Web.Http.xml
+C:\dev\libertarian.world\bin\System.Web.Http.WebHost.xml
+C:\dev\libertarian.world\obj\Debug\AngularStarter.csprojResolveAssemblyReference.cache
+C:\dev\libertarian.world\obj\Debug\AngularStarter.csproj.CoreCompileInputs.cache
+C:\dev\libertarian.world\obj\Debug\AngularStarter.csproj.CopyComplete
+C:\dev\libertarian.world\obj\Debug\SampleAngular.dll
+C:\dev\libertarian.world\obj\Debug\SampleAngular.pdb
